@@ -11,14 +11,14 @@ import { useSelector } from "react-redux";
 
 export default function Signup() {
   const [darkMode, setDarkMode] = useState("");
-  const [username, setUsername] = useState("");
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showModal, setShowModal] = useState(false);
 
   // Validation
-  const [invalidUsername, setInvalidUsername] = useState(false);
+
   const [invalidEmail, setInvalidEmail] = useState(false);
   const [invalidPassword, setInvalidPassword] = useState(false);
 
@@ -36,14 +36,6 @@ export default function Signup() {
   const checkIfValid = () => {
     let isValid = true;
     userList?.docs.forEach((doc) => {
-      // Check if username is valid
-      if (doc.data().username === username || !username) {
-        isValid = false;
-        setInvalidUsername(true);
-      } else {
-        setInvalidUsername(false);
-      }
-
       // Check if email is valid
       if (doc.data().email === email || !email) {
         isValid = false;
@@ -69,7 +61,6 @@ export default function Signup() {
 
     if (checkIfValid()) {
       db.collection("users").add({
-        username: username,
         email: email,
         password: password,
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
@@ -80,7 +71,6 @@ export default function Signup() {
 
   const closeRegistration = () => {
     setShowModal(false);
-    setUsername("");
     setEmail("");
     setPassword("");
     setConfirmPassword("");
@@ -104,21 +94,6 @@ export default function Signup() {
               </div>
               <h5 className="text-center fst-italic">Shopping-Style-Fashion</h5>
               <Form onSubmit={handleSubmit}>
-                <Form.Group className="mb-2">
-                  <Form.Label>Username</Form.Label>
-                  <Form.Control
-                    type="text"
-                    className={`form-control auth-input${darkMode}`}
-                    placeholder="Username"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    isInvalid={invalidUsername}
-                  ></Form.Control>
-                  <Form.Control.Feedback type="invalid">
-                    username already exist.
-                  </Form.Control.Feedback>
-                </Form.Group>
-
                 <Form.Group className="mb-2">
                   <Form.Label>Email</Form.Label>
                   <Form.Control
