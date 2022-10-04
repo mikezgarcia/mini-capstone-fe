@@ -33,31 +33,32 @@ export default function Login() {
     }
   });
 
-  const checkIfValid = () => {
-    let isValid = false;
-    // Check if there's no user created
-    if (userList.docs.length === 0) {
-      setInvalidUser(true);
-      return false;
-    }
-    // Check if user exist
-    userList.docs.forEach((user) => {
-      if (user.data().email === email && user.data().password === password) {
-        setInvalidUser(false);
-        isValid = true;
-      } else {
-        setInvalidUser(true);
-      }
-    });
-    //return statement
-    return isValid;
-  };
+  // const checkIfValid = () => {
+  //   let isValid = false;
+  //   // Check if there's no user created
+  //   if (userList.docs.length === 0) {
+  //     setInvalidUser(true);
+  //     return false;
+  //   }
+  //   // Check if user exist
+  //   userList.docs.forEach((user) => {
+  //     if (user.data().email === email && user.data().password === password) {
+  //       setInvalidUser(false);
+  //       isValid = true;
+  //     } else {
+  //       setInvalidUser(true);
+  //     }
+  //   });
+  //   //return statement
+  //   return isValid;
+  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (checkIfValid()) {
-      loginUser({ email });
-    }
+    loginUser({ email: email, password: password }).catch((error) => {
+      console.log(error);
+      setInvalidUser(true);
+    });
   };
 
   const facebookSignIn = (e) => {
