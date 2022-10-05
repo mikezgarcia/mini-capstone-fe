@@ -18,11 +18,11 @@ export default function Login() {
 
   // Validation
   const [invalidUser, setInvalidUser] = useState(false);
-
   const [user] = useAuthState(auth);
   const { loginUser } = bindActionCreators(actionUser, useDispatch());
-  const navigate = useNavigate();
   const activeUser = useSelector((state) => state.activeUser);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (user || activeUser.email) {
@@ -41,12 +41,28 @@ export default function Login() {
 
   const facebookSignIn = (e) => {
     e.preventDefault();
-    auth.signInWithPopup(facebookProvider).catch((e) => alert(e.message));
+    auth
+      .signInWithPopup(facebookProvider)
+      .then((response) => {
+        console.log(response?.additionalUserInfo.profile.email);
+        actionUser.loginUserViaProvider(
+          response?.additionalUserInfo.profile.email
+        );
+      })
+      .catch((e) => alert(e.message));
   };
 
   const googleSignIn = (e) => {
     e.preventDefault();
-    auth.signInWithPopup(googleProvider).catch((error) => alert(error.message));
+    auth
+      .signInWithPopup(googleProvider)
+      .then((response) => {
+        console.log(response?.additionalUserInfo.profile.email);
+        actionUser.loginUserViaProvider(
+          response?.additionalUserInfo.profile.email
+        );
+      })
+      .catch((error) => alert(error.message));
   };
 
   console.log(user);

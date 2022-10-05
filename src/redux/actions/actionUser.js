@@ -30,6 +30,21 @@ export const loginUser = (activeUserDetails) => {
   });
 };
 
+export const loginUserViaProvider = (email) => {
+  const url = `/user/loginByProvider/${email}`;
+  return new Promise((resolve, reject) => {
+    const promise = post(url);
+    promise.then((response) => {
+      resolve({
+        type: "LOGIN_USER",
+        payload: response,
+      }).catch((error) => {
+        reject(error);
+      });
+    });
+  });
+};
+
 export const logoutUser = () => {
   return (dispatch) => {
     dispatch({
