@@ -5,8 +5,7 @@ import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 import { faFacebook, faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
 import { Form } from "react-bootstrap";
-import { useCollection } from "react-firebase-hooks/firestore";
-import { auth, db, facebookProvider, googleProvider } from "../../../firebase";
+import { auth, facebookProvider, googleProvider } from "../../../firebase";
 import { bindActionCreators } from "redux";
 import { useDispatch, useSelector } from "react-redux";
 import * as actionUser from "../../../redux/actions/actionUser";
@@ -20,7 +19,6 @@ export default function Login() {
   // Validation
   const [invalidUser, setInvalidUser] = useState(false);
 
-  const [userList] = useCollection(db.collection("users"));
   const [user] = useAuthState(auth);
   const { loginUser } = bindActionCreators(actionUser, useDispatch());
   const navigate = useNavigate();
@@ -32,26 +30,6 @@ export default function Login() {
       navigate("/");
     }
   });
-
-  // const checkIfValid = () => {
-  //   let isValid = false;
-  //   // Check if there's no user created
-  //   if (userList.docs.length === 0) {
-  //     setInvalidUser(true);
-  //     return false;
-  //   }
-  //   // Check if user exist
-  //   userList.docs.forEach((user) => {
-  //     if (user.data().email === email && user.data().password === password) {
-  //       setInvalidUser(false);
-  //       isValid = true;
-  //     } else {
-  //       setInvalidUser(true);
-  //     }
-  //   });
-  //   //return statement
-  //   return isValid;
-  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
