@@ -20,7 +20,7 @@ export default function Blogs() {
         <img
           src={
             blog.imageLink
-              ? `http://localhost:8080/blog/${blog.blogId}/download`
+              ? `https://mini-capstone-be-production.up.railway.app/blog/${blog.blogId}/download`
               : "/images/empty-image.jpeg"
           }
           alt={blog.blogName}

@@ -36,7 +36,7 @@ export default function AboutUs() {
         <img
           src={
             product.imageLink
-              ? `http://localhost:8080/popular/${product.productId}/download`
+              ? `https://mini-capstone-be-production.up.railway.app/popular/${product.productId}/download`
               : "/images/empty-image.jpeg"
           }
           alt={product.productName}

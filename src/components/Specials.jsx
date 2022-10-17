@@ -33,7 +33,7 @@ export default function Specials() {
           <img
             src={
               item.imageLink
-                ? `http://localhost:8080/product/${item.productId}/download`
+                ? `https://mini-capstone-be-production.up.railway.app/product/${item.productId}/download`
                 : "/images/empty-image.jpeg"
             }
             alt={item.productName}

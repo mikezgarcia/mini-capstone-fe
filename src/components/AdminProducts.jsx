@@ -85,7 +85,7 @@ export default function AdminProducts() {
       // Upload Image
       axios
         .put(
-          `http://localhost:8080/product/${product.productId}/upload`,
+          `https://mini-capstone-be-production.up.railway.app/product/${product.productId}/upload`,
           formData,
           {
             headers: {
@@ -111,7 +111,7 @@ export default function AdminProducts() {
         <img
           src={
             product.imageLink
-              ? `http://localhost:8080/product/${product.productId}/download`
+              ? `https://mini-capstone-be-production.up.railway.app/product/${product.productId}/download`
               : "/images/empty-image.jpeg"
           }
           alt={product.productName}

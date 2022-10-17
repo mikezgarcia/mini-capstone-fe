@@ -103,7 +103,7 @@ export default function Cart() {
                       <img
                         src={
                           product.imageLink
-                            ? `http://localhost:8080/product/${product.productId}/download`
+                            ? `https://mini-capstone-be-production.up.railway.app/product/${product.productId}/download`
                             : "/images/empty-image.jpeg"
                         }
                         alt={product.productName}

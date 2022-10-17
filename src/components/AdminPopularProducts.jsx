@@ -70,7 +70,7 @@ export default function AdminPopularProducts() {
       // Upload to s3
       axios
         .put(
-          `http://localhost:8080/popular/${product.productId}/upload`,
+          `https://mini-capstone-be-production.up.railway.app/popular/${product.productId}/upload`,
           formData,
           {
             headers: {
@@ -96,7 +96,7 @@ export default function AdminPopularProducts() {
         <img
           src={
             product.imageLink
-              ? `http://localhost:8080/popular/${product.productId}/download`
+              ? `https://mini-capstone-be-production.up.railway.app/popular/${product.productId}/download`
               : "/images/empty-image.jpeg"
           }
           alt={product.productName}
