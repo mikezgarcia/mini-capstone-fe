@@ -1,8 +1,8 @@
 import axios from "axios";
 
-function getInstance() {
+function getInstance(url) {
   return axios.create({
-    baseURL: "https://mini-capstone-be-production.up.railway.app",
+    baseURL: url,
     timeout: 120000,
   });
 }
