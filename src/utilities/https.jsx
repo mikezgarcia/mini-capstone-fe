@@ -1,8 +1,10 @@
 import axios from "axios";
 
+const APIServicePath = "https://minicapstone-be.herokuapp.com/";
+
 function getInstance(url) {
   return axios.create({
-    baseURL: url,
+    baseURL: APIServicePath + url,
     timeout: 120000,
   });
 }
