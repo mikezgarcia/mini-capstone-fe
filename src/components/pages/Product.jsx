@@ -40,7 +40,7 @@ export default function Product() {
           <img
             src={
               product.imageLink
-                ? `https://mini-capstone-be-production.up.railway.app/product/${product.productId}/download`
+                ? `https://minicapstone-be.herokuapp.comproduct/${product.productId}/download`
                 : "/images/empty-image.jpeg"
             }
             alt={product.productName}

@@ -36,7 +36,7 @@ export default function AboutUs() {
         <img
           src={
             product.imageLink
-              ? `https://mini-capstone-be-production.up.railway.app/popular/${product.productId}/download`
+              ? `https://minicapstone-be.herokuapp.compopular/${product.productId}/download`
               : "/images/empty-image.jpeg"
           }
           alt={product.productName}

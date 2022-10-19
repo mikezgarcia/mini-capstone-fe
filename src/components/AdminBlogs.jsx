@@ -80,7 +80,7 @@ export default function AdminBlogs() {
       // Upload to s3
       axios
         .put(
-          `https://mini-capstone-be-production.up.railway.app/blog/${blog.blogId}/upload`,
+          `https://minicapstone-be.herokuapp.comblog/${blog.blogId}/upload`,
           formData,
           {
             headers: {
@@ -106,7 +106,7 @@ export default function AdminBlogs() {
         <img
           src={
             blog.imageLink
-              ? `https://mini-capstone-be-production.up.railway.app/blog/${blog.blogId}/download`
+              ? `https://minicapstone-be.herokuapp.comblog/${blog.blogId}/download`
               : "/images/empty-image.jpeg"
           }
           alt={blog.blogName}

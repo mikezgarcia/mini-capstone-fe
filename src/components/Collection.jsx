@@ -56,7 +56,7 @@ export default function Collection() {
             <img
               src={
                 item.imageLink
-                  ? `https://mini-capstone-be-production.up.railway.app/product/${item.productId}/download`
+                  ? `https://minicapstone-be.herokuapp.comproduct/${item.productId}/download`
                   : "/images/empty-image.jpeg"
               }
               alt={item.productName}
